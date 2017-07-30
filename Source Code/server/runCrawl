@@ -1,0 +1,72 @@
+#!/bin/bash
+echo -n "Initializing Database."
+sleep 2
+echo -n "."
+sleep 2
+echo -n "."
+sleep 2
+echo "."
+sleep 2
+python3 db/initDb.py
+sleep 2
+echo "Succesfully created tables!"
+echo ""
+
+sleep 2
+echo "Crawling Trusted Websites"
+
+sleep 2
+echo "Spider deployed at http://www.aljazeera.com/"
+python3 crawler/credible/aljazeera.py
+
+sleep 2
+echo "Spider deployed at http://www.bbc.com/news"
+python3 crawler/credible/bbc.py
+
+sleep 2
+echo "Spider deployed at http://edition.cnn.com/"
+python3 crawler/credible/cnn.py
+
+sleep 2
+echo "Spider deployed at http://www.foxnews.com/"
+python3 crawler/credible/fox.py
+
+sleep 2
+echo "Spider deployed at https://www.theguardian.com/international"
+python3 crawler/credible/guardian.py
+
+sleep 2
+echo "Spider deployed at https://news.google.com/"
+python3 crawler/credible/google.py
+
+sleep 2
+echo "Spider deployed at http://www.nbcnews.com/"
+python3 crawler/credible/nbc.py
+
+sleep 2
+echo "Crawling Fake Websites"
+
+sleep 2
+echo "Spider deployed at https://adobochronicles.com/"
+python3 crawler/fake/adobo.py
+
+sleep 2
+echo "Spider deployed at http://www.socialnewsph.com/"
+python3 crawler/fake/social.py
+
+sleep 2
+echo "Spider deployed at http://www.newsbiscuit.com/"
+python3 crawler/fake/biscuit.py
+
+sleep 2
+echo "Spider deployed at http://www.dailycurrant.com/"
+python3 crawler/fake/currant.py
+
+sleep 2
+echo "Spider deployed at http://www.dailycurrant.com/"
+python3 crawler/fake/onion.py
+
+
+sleep 2
+echo "Cleaning Database"
+python3 db/testDb.py

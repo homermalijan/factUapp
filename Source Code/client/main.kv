@@ -1,0 +1,60 @@
+<Button>:
+    font_size: 40
+    color: 0,1,1,1
+    size_hint: 0.4, 0.07
+<TextInput>:
+    font_size: 50
+    size_hint: 0.9, 0.05
+    multiline: False
+<AnimWidget@Widget>:
+    canvas:
+        Color:
+            rgba: 0, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    size_hint: None, None
+    size: 400, 3
+
+<FloatLayout>:
+    anim_box: anim_box
+    id: mainapp
+    AnchorLayout:
+        anchor_y: 'top'
+        Image:
+            source: 'a.png'
+            size_hint: 0.5, 0.5
+    Button:
+        id: submit_button
+        text: 'Submit'
+        #id: submit
+        on_release: root.update()
+        pos_hint: {"x":0.3, "y":0.35}
+    AnchorLayout:
+        TextInput:
+            id: text_input
+            on_text: root.hello(args[1])
+            on_text_validate: root.update()
+            hint_text: "Validate Statement"
+            focus: True
+    AnchorLayout:
+        anchor_y: 'bottom'
+        id: anim_box
+    Popup:
+        title: "Input IP Address"
+        id: ipPopup
+        AnchorLayout:
+            BoxLayout:
+                orientation: 'vertical'
+                center: root.center
+                AnchorLayout:
+                    TextInput:
+                        on_text: root.hello2(args[1])
+                        size_hint: 0.7, 0.1
+                        multiline: False
+                        hint_text: 'IP Address'
+                AnchorLayout:
+                    Button:
+                        on_press: root.getIP()
+                        size_hint: 0.4, 0.07
+                        text: 'Enter'
